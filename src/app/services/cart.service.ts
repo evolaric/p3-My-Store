@@ -13,6 +13,13 @@ export class CartService {
     return this.cart;
   }
 
+  async inCart(id: number): Promise<boolean> {
+    if ((await this.findIndex(id)) !== -1) {
+      return true;
+    }
+    return false;
+  } //may not need this
+
   async findIndex(id: number): Promise<number> {
     try {
       return this.cart.findIndex((obj) => obj.id === id);
@@ -34,7 +41,6 @@ export class CartService {
   async decrease(id: number): Promise<void> {
     try {
       const index = await this.findIndex(id);
-      console.log(index);
       const item = this.cart[index];
       item.quantity > 1 ? await item.decrease() : await this.remove(item.id);
     } catch (e) {

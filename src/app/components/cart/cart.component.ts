@@ -13,10 +13,9 @@ export class CartComponent implements OnInit {
     this.cart = [];
   }
 
-  async increase($increaseEvent: number): Promise<void> {
+  async increase(id: number): Promise<void> {
     try {
-      console.log($increaseEvent);
-      await this.cartService.increase($increaseEvent);
+      await this.cartService.increase(id);
     } catch (e) {
       throw new Error(e);
     }

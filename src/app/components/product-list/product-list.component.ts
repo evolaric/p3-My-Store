@@ -35,6 +35,30 @@ export class ProductListComponent implements OnInit {
     }
   }
 
+  async increase(id: number): Promise<void> {
+    try {
+      await this.cartService.increase(id);
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  async decrease(id: number): Promise<void> {
+    try {
+      await this.cartService.decrease(id);
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  async remove(id: number): Promise<void> {
+    try {
+      await this.cartService.remove(id);
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
   ngOnInit(): void {
     this.productsService.getProducts().subscribe((res) => {
       this.products = res;

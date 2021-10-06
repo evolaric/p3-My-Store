@@ -1,4 +1,19 @@
 <div>
   <p>{{ product.name }}</p>
-  <button (click)="addToCart(product)">add</button>
+  <p>{{ product.price }}</p>
+
+  <div *ngIf="inCart(product.id); else elseBlock">
+    <div>
+      <span>
+        <button (click)="increase(product.id)">+</button>
+        <p>{{ amountInCart(product.id) }}</p>
+        <button (click)="decrease(product.id)">-</button
+        ><button (click)="remove(product.id)">x</button>
+      </span>
+    </div>
+  </div>
 </div>
+
+<ng-template #elseBlock
+  ><button (click)="addToCart(product)">add</button></ng-template
+>

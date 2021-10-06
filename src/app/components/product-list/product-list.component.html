@@ -3,7 +3,11 @@
     <app-product
       *ngFor="let product of products"
       [product]="product"
+      [cart]="cart"
       (itemAddEvent)="addToCart($event)"
+      (increaseEvent)="increase($event)"
+      (decreaseEvent)="decrease($event)"
+      (removeEvent)="remove($event)"
     ></app-product>
   </div>
   <div class="rightcolumn">
