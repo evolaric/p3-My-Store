@@ -7,6 +7,7 @@ export class CartProduct extends Product {
   calcTotal: Function;
   remove: Function;
   total: number;
+  totalString: string;
 
   constructor(product: Product) {
     super();
@@ -16,8 +17,10 @@ export class CartProduct extends Product {
     this.url = product.url;
     this.description = product.description;
     this.quantity = 1; // if in the cart, must be at least 1
+
     this.calcTotal = function (): number {
-      const total = this.quantity * this.price;
+      const raw = this.quantity * this.price;
+      const total = Math.round((raw + Number.EPSILON) * 100) / 100;
       return total;
     };
     this.increase = async (): Promise<void> => {
@@ -33,5 +36,6 @@ export class CartProduct extends Product {
       this.total = this.calcTotal();
     };
     this.total = this.price;
+    this.totalString = this.price.toString();
   }
 }

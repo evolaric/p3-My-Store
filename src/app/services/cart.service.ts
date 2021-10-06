@@ -20,6 +20,17 @@ export class CartService {
     }
   }
 
+  /* async defineItem(id: number): Promise<void> {
+    try {
+      const index = await this.findIndex(id);
+      const item = this.cart[index];
+    } catch (e) {
+      throw new Error(e);
+    }
+  } 
+  
+  WHY DID I WRITE THIS?*/
+
   async increase(id: number): Promise<void> {
     try {
       const index = await this.findIndex(id);
@@ -34,7 +45,7 @@ export class CartService {
     try {
       const index = await this.findIndex(id);
       const item = this.cart[index];
-      index > 1 ? await item.decrease() : null;
+      index > 0 ? await item.decrease() : await this.remove(item.id);
     } catch (e) {
       throw new Error(e);
     }
@@ -43,7 +54,7 @@ export class CartService {
   async remove(id: number): Promise<void> {
     try {
       const index = await this.findIndex(id);
-      index > 1 ? await this.cart[index].remove() : null;
+      this.cart.splice(index, 1);
     } catch (e) {
       throw new Error(e);
     }
@@ -51,8 +62,10 @@ export class CartService {
 
   async addToCart(itemToAdd: CartProduct): Promise<void> {
     try {
-      this.cart.push(itemToAdd);
-      console.log(this.cart);
+      const index = await this.findIndex(itemToAdd.id);
+      index === -1
+        ? this.cart.push(itemToAdd)
+        : await this.increase(itemToAdd.id);
     } catch (e) {
       throw new Error(e);
     }
