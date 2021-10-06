@@ -1,0 +1,14 @@
+.tempcontainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.leftcolumn {
+  text-align: center;
+  width: 45%;
+}
+
+.rightcolumn {
+  text-align: center;
+  width: 45%;
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartProduct } from 'src/app/models/cart-product.model';
 import { CartService } from 'src/app/services/cart.service';
 import { Product } from '../../models/product.model';
 import { ProductsService } from '../../services/products.service';
@@ -10,8 +11,8 @@ import { ProductsService } from '../../services/products.service';
 })
 export class ProductListComponent implements OnInit {
   product: Product;
-  products: Product[] = [];
-  cart: Product[] = [];
+  products: Product[] | CartProduct[] = [];
+  cart: CartProduct[] = [];
   constructor(
     private productsService: ProductsService,
     private cartService: CartService
@@ -23,9 +24,19 @@ export class ProductListComponent implements OnInit {
       price: 0,
       url: '',
       description: '',
-      quantity: 1,
     };
   }
+
+  async addToCart(itemToAdd: Product): Promise<void> {
+    const cartItem = new CartProduct(itemToAdd);
+    try {
+      await this.cartService.addToCart(cartItem);
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  async existInCart(): Promise<void> {}
 
   ngOnInit(): void {
     this.productsService.getProducts().subscribe((res) => {

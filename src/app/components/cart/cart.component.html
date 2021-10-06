@@ -1,0 +1,4 @@
+<div *ngFor="let item of cart">
+  <div>{{ item.quantity }} | {{ item.name }} | {{ item.total }}</div>
+  <div><button (click)="increase(item.id)">+</button></div>
+</div>

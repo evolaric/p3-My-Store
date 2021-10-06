@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 import { BackButtonDirective } from './directives/back-button.directive';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductComponent } from './components/product/product.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
-  declarations: [AppComponent, BackButtonDirective, ProductListComponent, ProductComponent],
+  declarations: [AppComponent, BackButtonDirective, ProductListComponent, ProductComponent, CartComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
