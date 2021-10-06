@@ -1,9 +1,9 @@
-<div *ngFor="let item of cart">
-  <div>
-    {{ item.quantity }} | {{ item.name }}
-    <app-currency [price]="item.total"></app-currency>
-  </div>
-  <div><button (click)="increase(item.id)">+</button></div>
-  <div><button (click)="decrease(item.id)">-</button></div>
-  <div><button (click)="remove(item.id)">x</button></div>
+<div>
+  <app-cart-line
+    *ngFor="let cartProduct of cart"
+    [cartProduct]="cartProduct"
+    (increaseEvent)="increase($event)"
+    (decreaseEvent)="decrease($event)"
+    (removeEvent)="remove($event)"
+  ></app-cart-line>
 </div>

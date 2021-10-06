@@ -28,15 +28,12 @@ export class ProductListComponent implements OnInit {
   }
 
   async addToCart(itemToAdd: Product): Promise<void> {
-    const cartItem = new CartProduct(itemToAdd);
     try {
-      await this.cartService.addToCart(cartItem);
+      await this.cartService.addToCart(itemToAdd);
     } catch (e) {
       throw new Error(e);
     }
   }
-
-  async existInCart(): Promise<void> {}
 
   ngOnInit(): void {
     this.productsService.getProducts().subscribe((res) => {

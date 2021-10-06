@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CartProduct } from '../models/cart-product.model';
+import { Product } from '../models/product.model';
 
 @Injectable({
   providedIn: 'root',
@@ -20,17 +21,6 @@ export class CartService {
     }
   }
 
-  /* async defineItem(id: number): Promise<void> {
-    try {
-      const index = await this.findIndex(id);
-      const item = this.cart[index];
-    } catch (e) {
-      throw new Error(e);
-    }
-  } 
-  
-  WHY DID I WRITE THIS?*/
-
   async increase(id: number): Promise<void> {
     try {
       const index = await this.findIndex(id);
@@ -44,8 +34,9 @@ export class CartService {
   async decrease(id: number): Promise<void> {
     try {
       const index = await this.findIndex(id);
+      console.log(index);
       const item = this.cart[index];
-      index > 0 ? await item.decrease() : await this.remove(item.id);
+      item.quantity > 1 ? await item.decrease() : await this.remove(item.id);
     } catch (e) {
       throw new Error(e);
     }
@@ -60,11 +51,12 @@ export class CartService {
     }
   }
 
-  async addToCart(itemToAdd: CartProduct): Promise<void> {
+  async addToCart(itemToAdd: Product): Promise<void> {
     try {
+      const newCartItem = new CartProduct(itemToAdd);
       const index = await this.findIndex(itemToAdd.id);
       index === -1
-        ? this.cart.push(itemToAdd)
+        ? this.cart.push(newCartItem)
         : await this.increase(itemToAdd.id);
     } catch (e) {
       throw new Error(e);

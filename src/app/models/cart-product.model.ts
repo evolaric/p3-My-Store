@@ -1,3 +1,4 @@
+import { EventEmitter } from '@angular/core';
 import { Product } from './product.model';
 
 export class CartProduct extends Product {
@@ -7,7 +8,6 @@ export class CartProduct extends Product {
   calcTotal: Function;
   remove: Function;
   total: number;
-  totalString: string;
 
   constructor(product: Product) {
     super();
@@ -36,6 +36,5 @@ export class CartProduct extends Product {
       this.total = this.calcTotal();
     };
     this.total = this.price;
-    this.totalString = this.price.toString();
   }
 }

@@ -1,1 +1,6 @@
-<p>cart-line works!</p>
+<div>{{ cartProduct.name }}</div>
+<div>{{ cartProduct.quantity }}</div>
+<div><app-currency [price]="cartProduct.total"></app-currency></div>
+<div><button (click)="increase(cartProduct.id)">+</button></div>
+<div><button (click)="decrease(cartProduct.id)">-</button></div>
+<div><button (click)="remove(cartProduct.id)">x</button></div>
