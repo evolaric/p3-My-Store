@@ -43,7 +43,7 @@ export class ProductComponent implements OnInit {
     const index = this.cart.findIndex((obj) => obj.id === id);
     const count = this.cart[index].quantity;
     return count;
-  }
+  } // ? Check to see if this is called
 
   async increase(value: number): Promise<void> {
     try {
@@ -67,10 +67,6 @@ export class ProductComponent implements OnInit {
     } catch (e) {
       throw new Error(e);
     }
-  }
-
-  async isInCart(id: number): Promise<boolean> {
-    return true;
   }
 
   ngOnInit(): void {}

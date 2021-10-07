@@ -1,0 +1,14 @@
+<input
+  #search
+  type="number"
+  name="count"
+  min="0"
+  step="1"
+  onfocus="this.previousValue = this.value"
+  onkeydown="this.previousValue = this.value"
+  oninput="validity.valid || (value = this.previousValue)"
+  [ngModel]="count"
+  [ngModelOptions]="{ updateOn: 'blur' }"
+  (ngModelChange)="changeCount($event)"
+  (keyup.enter)="blur()"
+/>

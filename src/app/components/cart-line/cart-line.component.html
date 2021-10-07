@@ -1,6 +1,9 @@
-<div>{{ cartProduct.name }}</div>
-<div>{{ cartProduct.quantity }}</div>
-<div><app-currency [price]="cartProduct.total"></app-currency></div>
-<div><button (click)="increase(cartProduct.id)">+</button></div>
-<div><button (click)="decrease(cartProduct.id)">-</button></div>
-<div><button (click)="remove(cartProduct.id)">x</button></div>
+<span>
+  {{ cartProduct.name }}
+  {{ cartProduct.quantity }}
+  <app-currency [price]="cartProduct.total"></app-currency>
+  <button (click)="increase(cartProduct.id)">+</button>
+  <button (click)="decrease(cartProduct.id)">-</button>
+  <button (click)="remove(cartProduct.id)">x</button>
+  <span> </span
+></span>

@@ -9,6 +9,8 @@ import { ProductComponent } from './components/product/product.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CurrencyComponent } from './components/currency/currency.component';
 import { CartLineComponent } from './components/cart-line/cart-line.component';
+import { ProductNumberInputComponent } from './components/product-number-input/product-number-input.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,8 +21,15 @@ import { CartLineComponent } from './components/cart-line/cart-line.component';
     CartComponent,
     CurrencyComponent,
     CartLineComponent,
+    ProductNumberInputComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -54,7 +54,7 @@ export class CartService {
       this.cart.splice(index, 1);
     } catch (e) {
       throw new Error(e);
-    }
+    } // probably don't need remove method in the model --
   }
 
   async addToCart(itemToAdd: Product): Promise<void> {
@@ -64,6 +64,21 @@ export class CartService {
       index === -1
         ? this.cart.push(newCartItem)
         : await this.increase(itemToAdd.id);
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  async changeQuantity(id: number, quantity: number): Promise<void> {
+    try {
+      if (quantity < 1) {
+        await this.remove(id);
+      } else {
+        const index = await this.findIndex(id);
+        const item = this.cart[index];
+        item.quantity = quantity;
+        item.total = item.calcTotal();
+      }
     } catch (e) {
       throw new Error(e);
     }

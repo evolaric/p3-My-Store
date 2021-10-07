@@ -24,7 +24,6 @@ export class CartLineComponent implements OnInit {
       },
       increase: async (): Promise<void> => {},
       decrease: async (): Promise<void> => {},
-      remove: async (): Promise<void> => {},
       total: 0,
     };
   }

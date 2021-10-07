@@ -6,7 +6,6 @@ export class CartProduct extends Product {
   increase: Function;
   decrease: Function;
   calcTotal: Function;
-  remove: Function;
   total: number;
 
   constructor(product: Product) {
@@ -31,10 +30,7 @@ export class CartProduct extends Product {
       this.quantity--;
       this.total = this.calcTotal();
     };
-    this.remove = async (): Promise<void> => {
-      this.quantity = 0;
-      this.total = this.calcTotal();
-    };
+
     this.total = this.price;
   }
 }

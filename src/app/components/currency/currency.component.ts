@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-currency',
-  template: `<p>{{ price | currency }}</p>`,
+  template: `{{ price | currency }}`,
 })
 export class CurrencyComponent {
   @Input() price: number;
