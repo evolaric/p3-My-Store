@@ -1,10 +1,12 @@
 <div>
-  <p>{{ product.name }}</p>
-  <p>{{ product.price }}</p>
+  <div>
+    <p>{{ product.name }}</p>
+    <p>{{ product.price }}</p>
 
-  <a [routerLink]="['/product', product.id]">
-    <img src="{{ product.url }}"
-  /></a>
+    <a [routerLink]="['/product', product.id]">
+      <img class="product-list-image" src="{{ product.url }}"
+    /></a>
+  </div>
 
   <!-- <a [routerLink]="['/product']"> <img src="{{ product.url }}" /></a> -->
 
@@ -19,8 +21,8 @@
       <button (click)="remove(product.id)">x</button>
     </span>
   </div>
-</div>
 
-<ng-template #elseBlock
-  ><button (click)="addToCart(product)">add</button></ng-template
->
+  <ng-template #elseBlock
+    ><button (click)="addToCart(product)">add</button></ng-template
+  >
+</div>

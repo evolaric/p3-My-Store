@@ -7,10 +7,28 @@ import { Product } from '../models/product.model';
 })
 export class CartService {
   cart: CartProduct[] = [];
-  constructor() {}
+  itemCount: number;
+  cartTotal: number;
+  constructor() {
+    (this.itemCount = 0), (this.cartTotal = 0);
+  }
 
   getCart(): CartProduct[] {
     return this.cart;
+  }
+
+  getItemCount(): number {
+    const itemCount = this.cart.reduce((previous, current): number => {
+      return previous + current.quantity;
+    }, 0);
+    return itemCount;
+  }
+
+  getCartTotal(): number {
+    const cartTotal = this.cart.reduce((previous, current): number => {
+      return previous + current.total;
+    }, 0);
+    return cartTotal;
   }
 
   async inCart(id: number): Promise<boolean> {

@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Trebuchet MS", sans-serif;
+  margin: auto;
+}
+
+button {
+  border: 3px black;
+  margin: 2px;
+  padding: 4px 2px 4px 2px;
+  min-width: 24px;
+}

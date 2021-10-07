@@ -12,6 +12,7 @@ import { CartLineComponent } from './components/cart-line/cart-line.component';
 import { ProductNumberInputComponent } from './components/product-number-input/product-number-input.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { CartWidgetComponent } from './components/cart-widget/cart-widget.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
     CartLineComponent,
     ProductNumberInputComponent,
     ProductDetailsComponent,
+    CartWidgetComponent,
   ],
   imports: [
     BrowserModule,
