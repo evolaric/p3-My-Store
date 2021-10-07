@@ -8,7 +8,7 @@
       [count]="amountInCart(product.id)"
       [product]="product.id"
     ></app-product-number-input>
-    <button (click)="increase(product.id)">+</button>
+    <button class="increment" (click)="increase(product.id)">+</button>
     <button (click)="remove(product.id)">x</button>
   </span>
 </div>

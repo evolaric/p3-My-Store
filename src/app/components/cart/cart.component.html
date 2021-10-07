@@ -3,13 +3,14 @@
   <button backButton>Back</button>
 </div>
 
-<ng-template #elseBlock
-  ><table>
+<ng-template #elseBlock>
+  <table>
     <app-cart-line
       *ngFor="let cartProduct of cart"
       [cartProduct]="cartProduct"
       (increaseEvent)="increase($event)"
       (decreaseEvent)="decrease($event)"
       (removeEvent)="remove($event)"
-    ></app-cart-line></table
-></ng-template>
+    ></app-cart-line>
+  </table>
+</ng-template>

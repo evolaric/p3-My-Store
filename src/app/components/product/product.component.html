@@ -1,28 +1,27 @@
-<div>
+<div class="product-tile">
   <div>
     <p>{{ product.name }}</p>
-    <p>{{ product.price }}</p>
-
     <a [routerLink]="['/product', product.id]">
       <img class="product-list-image" src="{{ product.url }}"
     /></a>
+    <p><app-currency [price]="product.price"></app-currency></p>
   </div>
-
-  <!-- <a [routerLink]="['/product']"> <img src="{{ product.url }}" /></a> -->
 
   <div *ngIf="inCart(product.id); else elseBlock">
     <span>
-      <button (click)="decrease(product.id)">-</button>
+      <button class="increment" (click)="decrease(product.id)">-</button>
       <app-product-number-input
         [count]="amountInCart(product.id)"
         [product]="product.id"
       ></app-product-number-input>
-      <button (click)="increase(product.id)">+</button>
-      <button (click)="remove(product.id)">x</button>
+      <button class="increment" (click)="increase(product.id)">+</button>
+      <button class="remove" (click)="remove(product.id)">x</button>
     </span>
   </div>
 
   <ng-template #elseBlock
-    ><button (click)="addToCart(product)">add</button></ng-template
+    ><button class="add-button" (click)="addToCart(product)">
+      add to cart
+    </button></ng-template
   >
 </div>

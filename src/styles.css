@@ -1,3 +1,5 @@
+/* resets, typography */
+
 * {
   margin: 0;
   padding: 0;
@@ -6,9 +8,130 @@
   margin: auto;
 }
 
+#wrapper {
+  background-color: #f1f2f3;
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* buttons */
+
 button {
-  border: 3px black;
-  margin: 2px;
-  padding: 4px 2px 4px 2px;
+  border: 0px;
+  padding: 6px;
   min-width: 24px;
+  display: inline-block;
+  line-height: 100%;
+}
+.increment {
+  border-radius: 50%;
+  background-color: rgb(41, 130, 202);
+  color: white;
+  height: 30px;
+  width: 30px;
+}
+
+.increment:hover {
+  background-color: rgb(20, 105, 175);
+}
+
+.remove {
+  border-radius: 50%;
+  background-color: rgb(236, 75, 70);
+  color: white;
+  height: 30px;
+  width: 30px;
+}
+
+.remove:hover {
+  background-color: rgb(250, 58, 51);
+}
+
+.add-button {
+  min-width: 30px;
+  border-radius: 12px;
+  background-color: rgb(41, 130, 202);
+  color: white;
+  height: 30px;
+}
+
+/* header */
+
+.header {
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  background: rgb(41, 130, 202);
+  padding: 10px 0;
+  color: #fff;
+}
+
+.inner-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  max-width: 750px;
+  flex: 0 6 auto;
+}
+
+.left-header {
+  display: inline-block;
+  text-align: left;
+}
+
+.right-header {
+  display: inline-block;
+  text-align: right;
+}
+
+/* main store display */
+
+.display-flexbox {
+  padding-top: 64px;
+  max-width: 750px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+/* product tile */
+
+.product-tile {
+  display: inline-block;
+  text-align: center;
+  border-radius: 12px;
+  margin: 0px 6px 24px 6px;
+}
+
+.product-list-image {
+  display: inline-block;
+  border-radius: 12px;
+  width: 233px;
+}
+
+/* number input formatting */
+input {
+  width: 45px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.input {
+  display: inline-block;
+  width: 45px;
 }

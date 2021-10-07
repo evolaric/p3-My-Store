@@ -1,5 +1,5 @@
 <div>
   <p>cart-widget works!</p>
   {{ getItemCount() }}
-  {{ getCartTotal() }}
+  <app-currency [price]="getCartTotal()"></app-currency>
 </div>
