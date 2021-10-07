@@ -2,6 +2,12 @@
   <p>{{ product.name }}</p>
   <p>{{ product.price }}</p>
 
+  <a [routerLink]="['/product', product.id]">
+    <img src="{{ product.url }}"
+  /></a>
+
+  <!-- <a [routerLink]="['/product']"> <img src="{{ product.url }}" /></a> -->
+
   <div *ngIf="inCart(product.id); else elseBlock">
     <span>
       <button (click)="decrease(product.id)">-</button>

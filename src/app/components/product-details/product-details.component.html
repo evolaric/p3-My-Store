@@ -1,0 +1,20 @@
+<p>{{ product.name }}</p>
+<img src="{{ product.url }}" />
+<p>{{ product.price }}</p>
+<div *ngIf="inCart(product.id); else elseBlock">
+  <span>
+    <button (click)="decrease(product.id)">-</button>
+    <app-product-number-input
+      [count]="amountInCart(product.id)"
+      [product]="product.id"
+    ></app-product-number-input>
+    <button (click)="increase(product.id)">+</button>
+    <button (click)="remove(product.id)">x</button>
+  </span>
+</div>
+
+<ng-template #elseBlock
+  ><button (click)="addToCart(product)">add</button></ng-template
+>
+
+<button backButton>Back</button>
