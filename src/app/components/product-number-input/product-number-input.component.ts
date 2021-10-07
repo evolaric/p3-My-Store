@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { CartService } from '../../services/cart.service';
-import { Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-product-number-input',
@@ -11,11 +10,13 @@ export class ProductNumberInputComponent implements OnInit {
   @Input() product: number;
   @Input() count: number;
   @ViewChild('search') search: ElementRef; // @todo research ElementalRef as type
+  visible: boolean;
   // be sure to inject ElementRef, dummy!
   constructor(
     private ElementRef: ElementRef,
     private cartService: CartService
   ) {
+    this.visible = false;
     this.search = this.ElementRef;
     this.count = 0;
     this.product = 0;
@@ -32,7 +33,20 @@ export class ProductNumberInputComponent implements OnInit {
 
   blur(): void {
     this.search.nativeElement.blur(); // all other native methods are available as well
+    this.visible = false;
   }
+
+  visibilityToggle(): void {
+    this.visible = !this.visible;
+  }
+
+  /* setVisible(): void {
+    this.visible = true;
+  }
+
+  isVisible(): boolean {
+    return this.visible;
+  } */
 
   ngOnInit(): void {}
 }

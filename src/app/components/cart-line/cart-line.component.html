@@ -1,9 +1,10 @@
-<span>
-  {{ cartProduct.name }}
-  {{ cartProduct.quantity }}
-  <app-currency [price]="cartProduct.total"></app-currency>
-  <button (click)="increase(cartProduct.id)">+</button>
-  <button (click)="decrease(cartProduct.id)">-</button>
-  <button (click)="remove(cartProduct.id)">x</button>
-  <span> </span
-></span>
+<tr>
+  <td>
+    {{ cartProduct.name }}
+    {{ cartProduct.quantity }}
+  </td>
+  <td><app-currency [price]="cartProduct.total"></app-currency></td>
+  <td><button (click)="increase(cartProduct.id)">+</button></td>
+  <td><button (click)="decrease(cartProduct.id)">-</button></td>
+  <td><button (click)="remove(cartProduct.id)">x</button></td>
+</tr>

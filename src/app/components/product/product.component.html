@@ -3,17 +3,15 @@
   <p>{{ product.price }}</p>
 
   <div *ngIf="inCart(product.id); else elseBlock">
-    <div>
-      <span>
-        <button (click)="decrease(product.id)">-</button>
-        <app-product-number-input
-          [count]="amountInCart(product.id)"
-          [product]="product.id"
-        ></app-product-number-input>
-        <button (click)="increase(product.id)">+</button>
-        <button (click)="remove(product.id)">x</button>
-      </span>
-    </div>
+    <span>
+      <button (click)="decrease(product.id)">-</button>
+      <app-product-number-input
+        [count]="amountInCart(product.id)"
+        [product]="product.id"
+      ></app-product-number-input>
+      <button (click)="increase(product.id)">+</button>
+      <button (click)="remove(product.id)">x</button>
+    </span>
   </div>
 </div>
 

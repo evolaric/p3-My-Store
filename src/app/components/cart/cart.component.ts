@@ -13,6 +13,11 @@ export class CartComponent implements OnInit {
     this.cart = [];
   }
 
+  isCartEmpty(): boolean {
+    if (this.cart.length > 0) return true;
+    return false;
+  }
+
   async increase(id: number): Promise<void> {
     try {
       await this.cartService.increase(id);
