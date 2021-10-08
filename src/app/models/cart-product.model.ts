@@ -1,6 +1,14 @@
 import { EventEmitter } from '@angular/core';
 import { Product } from './product.model';
 
+/* 
+this should likely have been separated into a model and a class
+or maybe I should have use a factory function.
+
+I'm still unclear how to organize and structure all the different flavors
+of classes available
+*/
+
 export class CartProduct extends Product {
   quantity: number;
   increase: Function;

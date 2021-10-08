@@ -40,13 +40,5 @@ export class ProductNumberInputComponent implements OnInit {
     this.visible = !this.visible;
   }
 
-  /* setVisible(): void {
-    this.visible = true;
-  }
-
-  isVisible(): boolean {
-    return this.visible;
-  } */
-
   ngOnInit(): void {}
 }

@@ -61,7 +61,6 @@ export class ProductListComponent implements OnInit {
 
   async change(event: number): Promise<void> {
     try {
-      console.log('this is where the service would be called: ' + event);
     } catch (e) {
       throw new Error(e);
     }

@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { CartProduct } from '../models/cart-product.model';
 import { Product } from '../models/product.model';
+/* 
+Most of the app logic is here, as I feel like the products array would mostly be handled by the backend.
+*/
 
 @Injectable({
   providedIn: 'root',
@@ -76,7 +79,7 @@ export class CartService {
       this.cart.splice(index, 1);
     } catch (e) {
       throw new Error(e);
-    } // probably don't need remove method in the model --
+    }
   }
 
   async addToCart(itemToAdd: Product): Promise<void> {
