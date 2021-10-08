@@ -201,6 +201,7 @@ input {
 }
 
 .cart-controls {
+  min-width: 300px;
   text-align: center;
   grid-area: controls;
 }

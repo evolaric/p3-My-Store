@@ -1,7 +1,7 @@
 <div class="display-flexbox">
   <div *ngIf="!isCartEmpty(); else elseBlock">
     <h2>THE CART IS EMPTY</h2>
-    <button backButton>Back</button>
+    <button class="add-button" backButton>Back</button>
   </div>
 
   <ng-template #elseBlock>
