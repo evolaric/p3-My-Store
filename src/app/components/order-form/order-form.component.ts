@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartProduct } from '../../models/cart-product.model';
 
 @Component({
@@ -13,7 +14,7 @@ export class OrderFormComponent implements OnInit {
   cardnumber: number | null;
   finalizedCart: CartProduct[];
 
-  constructor() {
+  constructor(private route: Router) {
     this.firstName = '';
     this.lastName = '';
     this.address = '';
@@ -22,7 +23,18 @@ export class OrderFormComponent implements OnInit {
   }
 
   submitForm() {
-    null;
+    this.route.navigate(['/confirmation']);
+    /* 
+    Realistically, this should have a lot of logic here:
+    1. Set the user information (assuming it had not been set via login)
+    2. Call services to finalize the order in the database
+    3. Validate the credit card and get a confirmation number via a service
+    4. Push this order into a "closed order" database table via a service
+    5. etc.
+
+    However, for the sake of simplicity, we will simply route to the confirmation page
+    and clear the cart.
+    */
   }
 
   ngOnInit(): void {}

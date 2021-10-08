@@ -31,6 +31,10 @@ export class CartService {
     return cartTotal;
   }
 
+  clearCart(): void {
+    this.cart = [];
+  }
+
   async inCart(id: number): Promise<boolean> {
     if ((await this.findIndex(id)) !== -1) {
       return true;
