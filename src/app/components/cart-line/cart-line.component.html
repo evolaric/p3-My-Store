@@ -1,10 +1,23 @@
-<tr>
-  <td>
-    {{ cartProduct.name }}
-    {{ cartProduct.quantity }}
-  </td>
-  <td><app-currency [price]="cartProduct.total"></app-currency></td>
-  <td><button (click)="increase(cartProduct.id)">+</button></td>
-  <td><button (click)="decrease(cartProduct.id)">-</button></td>
-  <td><button (click)="remove(cartProduct.id)">x</button></td>
-</tr>
+<div class="cart-container">
+  <div class="cart-total">
+    <app-currency [price]="cartProduct.total"></app-currency>
+  </div>
+  <div class="cart-image">
+    <img class="cart-line-image" src="{{ cartProduct.url }}" />
+  </div>
+  <div class="cart-name">
+    <h3>{{ cartProduct.name }}</h3>
+  </div>
+  <div class="cart-unit-price">
+    <app-currency [price]="cartProduct.price"></app-currency>
+  </div>
+  <div class="cart-controls">
+    <button class="increment" (click)="decrease(cartProduct.id)">-</button>
+    <app-product-number-input
+      [product]="cartProduct.id"
+      [count]="cartProduct.quantity"
+    ></app-product-number-input>
+    <button class="increment" (click)="increase(cartProduct.id)">+</button>
+    <button class="remove" (click)="remove(cartProduct.id)">x</button>
+  </div>
+</div>

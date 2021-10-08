@@ -1,20 +1,30 @@
-<p>{{ product.name }}</p>
-<img src="{{ product.url }}" />
-<p>{{ product.price }}</p>
-<div *ngIf="inCart(product.id); else elseBlock">
-  <span>
-    <button (click)="decrease(product.id)">-</button>
-    <app-product-number-input
-      [count]="amountInCart(product.id)"
-      [product]="product.id"
-    ></app-product-number-input>
-    <button class="increment" (click)="increase(product.id)">+</button>
-    <button (click)="remove(product.id)">x</button>
-  </span>
+<div class="display-flexbox">
+  <div class="details-left">
+    <img class="details-image" src="{{ product.url }}" />
+  </div>
+  <div class="details-right">
+    <h2>{{ product.name }}</h2>
+    <h4>{{ product.price }}</h4>
+    <div class="details-description">
+      <p>{{ product.description }}</p>
+    </div>
+    <div *ngIf="inCart(product.id); else elseBlock">
+      <span>
+        <button class="increment" (click)="decrease(product.id)">-</button>
+        <app-product-number-input
+          [count]="amountInCart(product.id)"
+          [product]="product.id"
+        ></app-product-number-input>
+        <button class="increment" (click)="increase(product.id)">+</button>
+        <button class="remove" (click)="remove(product.id)">x</button>
+      </span>
+    </div>
+
+    <ng-template #elseBlock
+      ><button class="add-button" (click)="addToCart(product)">
+        add to cart
+      </button></ng-template
+    >
+    <button class="add-button" backButton>Back</button>
+  </div>
 </div>
-
-<ng-template #elseBlock
-  ><button (click)="addToCart(product)">add</button></ng-template
->
-
-<button backButton>Back</button>

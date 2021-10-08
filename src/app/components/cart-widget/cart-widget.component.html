@@ -1,5 +1,4 @@
-<div>
-  <p>cart-widget works!</p>
-  {{ getItemCount() }}
-  <app-currency [price]="getCartTotal()"></app-currency>
+<div [routerLink]="['/cart']">
+  <p>{{ getItemCount() }} items in cart</p>
+  <p>Subtotal: <app-currency [price]="getCartTotal()"></app-currency></p>
 </div>

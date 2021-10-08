@@ -1,16 +1,18 @@
-<div *ngIf="!isCartEmpty(); else elseBlock">
-  <h2>THE CART IS EMPTY</h2>
-  <button backButton>Back</button>
-</div>
+<div class="display-flexbox">
+  <div *ngIf="!isCartEmpty(); else elseBlock">
+    <h2>THE CART IS EMPTY</h2>
+    <button backButton>Back</button>
+  </div>
 
-<ng-template #elseBlock>
-  <table>
-    <app-cart-line
-      *ngFor="let cartProduct of cart"
-      [cartProduct]="cartProduct"
-      (increaseEvent)="increase($event)"
-      (decreaseEvent)="decrease($event)"
-      (removeEvent)="remove($event)"
-    ></app-cart-line>
-  </table>
-</ng-template>
+  <ng-template #elseBlock>
+    <div class="cart-table">
+      <app-cart-line
+        *ngFor="let cartProduct of cart"
+        [cartProduct]="cartProduct"
+        (increaseEvent)="increase($event)"
+        (decreaseEvent)="decrease($event)"
+        (removeEvent)="remove($event)"
+      ></app-cart-line>
+    </div>
+  </ng-template>
+</div>
