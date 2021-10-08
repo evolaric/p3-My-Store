@@ -1,9 +1,7 @@
 <div class="display-flexbox">
   <div *ngIf="!isCartEmpty(); else elseBlock">
     <h2>THE CART IS EMPTY</h2>
-    <button class="add-button" backButton>Back</button>
   </div>
-
   <ng-template #elseBlock>
     <div class="cart-table">
       <app-cart-line
@@ -14,5 +12,15 @@
         (removeEvent)="remove($event)"
       ></app-cart-line>
     </div>
+    <div class="details-bar">
+      <div class="user-form">
+        <app-order-form></app-order-form>
+      </div>
+      <div class="order-total">
+        <h2>Total</h2>
+        <h2><app-currency [price]="getCartTotal()"></app-currency></h2>
+      </div>
+    </div>
   </ng-template>
+  <button class="add-button" backButton>Back</button>
 </div>

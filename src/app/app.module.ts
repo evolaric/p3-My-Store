@@ -14,6 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { CartWidgetComponent } from './components/cart-widget/cart-widget.component';
 import { HeaderComponent } from './components/header/header.component';
+import { OrderFormComponent } from './components/order-form/order-form.component';
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { HeaderComponent } from './components/header/header.component';
     ProductDetailsComponent,
     CartWidgetComponent,
     HeaderComponent,
+    OrderFormComponent,
+    ConfirmationComponent,
   ],
   imports: [
     BrowserModule,

@@ -75,6 +75,7 @@ button {
 /* header */
 
 .header {
+  flex-direction: row;
   width: 100%;
   height: 60px;
   position: fixed;
@@ -84,20 +85,18 @@ button {
 }
 
 .inner-header {
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
+  width: 100%;
   max-width: 750px;
-  flex: 0 6 auto;
+  padding: 2px;
 }
 
 .left-header {
-  display: inline-block;
+  float: left;
   text-align: left;
 }
 
 .right-header {
-  display: inline-block;
+  float: right;
   text-align: right;
 }
 
@@ -127,19 +126,6 @@ button {
   width: 233px;
 }
 
-/* number input formatting */
-input {
-  width: 45px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.input {
-  display: inline-block;
-  width: 45px;
-}
-
 /* product details page */
 
 .details-image {
@@ -163,6 +149,26 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* cart widget */
+
+.cart-widget {
+  display: inline-block;
+}
+
+.widget-info {
+  display: block;
+  float: left;
+}
+.widget-icon {
+  display: block;
+  float: right;
+}
+
+.ionicon {
+  height: 40px;
+  color: white;
 }
 
 /* cart */
@@ -204,4 +210,48 @@ input {
   min-width: 300px;
   text-align: center;
   grid-area: controls;
+}
+
+.details-bar {
+  width: 100%;
+  justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 26px;
+}
+
+.form-input {
+  width: 80%;
+  text-align: left;
+  margin: 3px;
+  padding: 3px;
+}
+
+.user-form {
+  text-align: center;
+  width: 60%;
+  display: inline-block;
+  margin: auto;
+}
+
+.order-total {
+  width: 40%;
+  text-align: center;
+  display: inline-block;
+}
+
+.purchase-button {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  width: 60%;
+  background-color: rgb(12, 58, 100);
+  color: white;
+}
+
+.purchase-button:disabled {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  width: 60%;
+  background-color: rgb(210, 215, 219);
+  color: rgb(161, 159, 159);
 }

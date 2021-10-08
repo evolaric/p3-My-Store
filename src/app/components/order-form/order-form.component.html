@@ -1,0 +1,56 @@
+<form #form="ngForm" (ngSubmit)="(submitForm)">
+  <div>Enter your shipping and payment information to continue.</div>
+  <input
+    class="form-input"
+    required
+    minlength="2"
+    maxlength="50"
+    type="text"
+    name="firstName"
+    placeholder="First Name"
+    [(ngModel)]="firstName"
+    autocomplete="name"
+  /><br />
+  <input
+    class="form-input"
+    required
+    type="text"
+    name="lastName"
+    placeholder="Last Name"
+    [(ngModel)]="lastName"
+    autocomplete="family-name"
+  /><br />
+  <input
+    class="form-input"
+    required
+    type="text"
+    name="address"
+    placeholder="Address"
+    [(ngModel)]="address"
+  /><br />
+  <input
+    class="form-input"
+    required
+    minlength="12"
+    maxlength="20"
+    type="tel"
+    inputmode="numeric"
+    pattern="[0-9\s]{13,19}"
+    autocomplete="cc-number"
+    type="number"
+    name="address"
+    placeholder="Credit card number"
+    [(ngModel)]="cardnumber"
+  /><br />
+  <input
+    class="purchase-button"
+    type="submit"
+    value="Finalize Order"
+    [disabled]="form.invalid"
+  />
+</form>
+
+<!-- 
+    cc number solution from:
+    https://stackoverflow.com/questions/48534229/what-is-the-correct-input-type-for-credit-card-numbers
+ -->
