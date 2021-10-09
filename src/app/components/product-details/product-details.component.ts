@@ -4,6 +4,7 @@ import { CartProduct } from 'src/app/models/cart-product.model';
 import { Product } from '../../models/product.model';
 import { CartService } from '../../services/cart.service';
 import { ProductsService } from '../../services/products.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-details',
@@ -17,7 +18,8 @@ export class ProductDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productsService: ProductsService,
-    private cartService: CartService
+    private cartService: CartService,
+    private toast: ToastrService
   ) {
     this.id = 0;
     this.product = {
@@ -32,6 +34,7 @@ export class ProductDetailsComponent implements OnInit {
   async addToCart(itemToAdd: Product): Promise<void> {
     try {
       await this.cartService.addToCart(itemToAdd);
+      await this.showIncrease();
     } catch (e) {
       throw new Error(e);
     }
@@ -40,6 +43,7 @@ export class ProductDetailsComponent implements OnInit {
   async increase(id: number): Promise<void> {
     try {
       await this.cartService.increase(id);
+      await this.showIncrease();
     } catch (e) {
       throw new Error(e);
     }
@@ -48,6 +52,7 @@ export class ProductDetailsComponent implements OnInit {
   async decrease(id: number): Promise<void> {
     try {
       await this.cartService.decrease(id);
+      await this.showDecrease();
     } catch (e) {
       throw new Error(e);
     }
@@ -56,14 +61,7 @@ export class ProductDetailsComponent implements OnInit {
   async remove(id: number): Promise<void> {
     try {
       await this.cartService.remove(id);
-    } catch (e) {
-      throw new Error(e);
-    }
-  }
-
-  async change(event: number): Promise<void> {
-    try {
-      console.log('this is where the service would be called: ' + event);
+      await this.showRemove();
     } catch (e) {
       throw new Error(e);
     }
@@ -88,6 +86,18 @@ export class ProductDetailsComponent implements OnInit {
     if (product !== undefined) {
       return product;
     } else return this.product;
+  }
+
+  async showIncrease(): Promise<void> {
+    this.toast.success(`${this.product.name} added to cart`);
+  }
+
+  async showDecrease(): Promise<void> {
+    this.toast.success(`${this.product.name} removed from cart`);
+  }
+
+  async showRemove(): Promise<void> {
+    this.toast.success(`${this.product.name} cleared from cart`);
   }
 
   ngOnInit(): void {
