@@ -89,15 +89,27 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   async showIncrease(): Promise<void> {
-    this.toast.success(`${this.product.name} added to cart`);
+    try {
+      this.toast.success(`${this.product.name} added to cart`);
+    } catch (e) {
+      throw new Error(e);
+    }
   }
 
   async showDecrease(): Promise<void> {
-    this.toast.success(`${this.product.name} removed from cart`);
+    try {
+      this.toast.success(`${this.product.name} removed from cart`);
+    } catch (e) {
+      throw new Error(e);
+    }
   }
 
   async showRemove(): Promise<void> {
-    this.toast.success(`${this.product.name} cleared from cart`);
+    try {
+      this.toast.success(`${this.product.name} cleared from cart`);
+    } catch (e) {
+      throw new Error(e);
+    }
   }
 
   ngOnInit(): void {
