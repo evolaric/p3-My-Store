@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { CartProduct } from '../../models/cart-product.model';
 import { Product } from '../../models/product.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product',
@@ -14,7 +15,7 @@ export class ProductComponent implements OnInit {
   @Output() increaseEvent = new EventEmitter<number>();
   @Output() decreaseEvent = new EventEmitter<number>();
   @Output() removeEvent = new EventEmitter<number>();
-  constructor() {
+  constructor(private toast: ToastrService) {
     this.cart = [];
     this.product = {
       id: 0,
@@ -28,6 +29,7 @@ export class ProductComponent implements OnInit {
   async addToCart(product: Product): Promise<void> {
     try {
       this.itemAddEvent.emit(product);
+      await this.showIncrease();
     } catch (e) {
       throw new Error(e);
     }
@@ -48,6 +50,7 @@ export class ProductComponent implements OnInit {
   async increase(value: number): Promise<void> {
     try {
       this.increaseEvent.emit(value);
+      await this.showIncrease();
     } catch (e) {
       throw new Error(e);
     }
@@ -56,6 +59,7 @@ export class ProductComponent implements OnInit {
   async decrease(value: number): Promise<void> {
     try {
       this.decreaseEvent.emit(value);
+      await this.showDecrease();
     } catch (e) {
       throw new Error(e);
     }
@@ -64,9 +68,22 @@ export class ProductComponent implements OnInit {
   async remove(value: number): Promise<void> {
     try {
       this.removeEvent.emit(value);
+      await this.showRemove();
     } catch (e) {
       throw new Error(e);
     }
+  }
+
+  async showIncrease(): Promise<void> {
+    this.toast.success(`${this.product.name} added to cart`);
+  }
+
+  async showDecrease(): Promise<void> {
+    this.toast.success(`${this.product.name} removed from cart`);
+  }
+
+  async showRemove(): Promise<void> {
+    this.toast.success(`${this.product.name} cleared from cart`);
   }
 
   ngOnInit(): void {}

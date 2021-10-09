@@ -16,6 +16,8 @@ import { CartWidgetComponent } from './components/cart-widget/cart-widget.compon
 import { HeaderComponent } from './components/header/header.component';
 import { OrderFormComponent } from './components/order-form/order-form.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { ConfirmationComponent } from './components/confirmation/confirmation.co
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

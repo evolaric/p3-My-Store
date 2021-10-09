@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { CartService } from '../../services/cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-number-input',
@@ -14,7 +15,8 @@ export class ProductNumberInputComponent implements OnInit {
   // be sure to inject ElementRef, dummy!
   constructor(
     private ElementRef: ElementRef,
-    private cartService: CartService
+    private cartService: CartService,
+    private toast: ToastrService
   ) {
     this.visible = false;
     this.search = this.ElementRef;
@@ -26,6 +28,15 @@ export class ProductNumberInputComponent implements OnInit {
     try {
       console.log(this.product, quantity);
       this.cartService.changeQuantity(this.product, quantity);
+      await this.showChangeCount();
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  async showChangeCount(): Promise<void> {
+    try {
+      this.toast.success(`Quantity set to ${this.count} `);
     } catch (e) {
       throw new Error(e);
     }
